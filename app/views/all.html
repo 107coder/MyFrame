@@ -1,0 +1,33 @@
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+th,td{
+    width:200px;
+    font-size: 20px;
+}
+
+</style>
+<center>
+<table  style="margin:50px;">
+    <tr>
+        <th>ID</th>
+        <th>留言标题</th>
+        <th>留言内容</th>
+        <th>留言时间</th>
+        <th>操作</th>
+    </tr>
+    {% for val in data%}
+    <tr>
+        <td>{{ val.mid }}</td>
+        <td>{{ val.title }}</td>
+        <td>{{ val.content }}</td>
+        <td>{{ val.time|date('Y-m-d H:i:s') }}</td>
+        <td> <a href="index/delOne/id/{{ val.mid }}">删除留言</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</center>
+{% endblock %}
