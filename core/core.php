@@ -20,7 +20,7 @@ class Core{
             $class = '\\app\\ctrl\\'.$ctrlClass.'ctrl';
             $ctrl= new $class();
             $ctrl->$action();
-            \core\lib\log::log('ctrl:'.$ctrlClass.'action:'.$action);
+            \core\lib\log::log('ctrl:'.$ctrlClass.'   action:'.$action);
         }else{
             p("控制器未找到");
         }
@@ -61,10 +61,20 @@ class Core{
      * 显示view试图文件
      */
     public function display($file){
+        $filename = $file;
         $file = APP.'/views/'.$file;
         if(is_file($file)){
-            extract($this->assign);
-            include $file;
+
+            require_once MYFRAME.'/vendor/autoload.php';
+            $loader = new \Twig\Loader\FilesystemLoader(APP.'/views');
+            $twig = new \Twig\Environment($loader, [
+                'cache' => MYFRAME.'/log/twig',
+                'debug' => DEBUG
+            ]);
+
+            // $template = $twig->loadTemplate('index.html');
+            $template = $twig->loadTemplate($filename);
+            $template->display($this->assign?$this->assign:array());
         }
 
     }

@@ -1,0 +1,14 @@
+
+
+{% extends "layout.html" %}
+{% block content%}
+<div class="hope">
+        <div class="am-g am-container">
+            <form action="/index/save" method="post">
+                <input type="text" name="title">
+                <textarea name="content" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="提交">
+            </form>
+        </div>
+    </div>
+{% endblock%}

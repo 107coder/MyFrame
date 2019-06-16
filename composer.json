@@ -1,0 +1,16 @@
+{
+    "name":"my frame",
+    "description":"PHP FRAME",
+    "type":"Framework",
+    "keysword":[
+        "PHP","PHPFRAME"
+    ],
+    "require":{
+        "php":">=5.3.0",
+        "filp/whoops":"*",
+        "symfony/var-dumper":"*",
+        "catfan/medoo":"*",
+        "twig/twig":"*"
+    }
+
+}
